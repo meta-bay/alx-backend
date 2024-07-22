@@ -37,6 +37,7 @@ class Server:
             return []
         else:
             return self.__dataset[start_idx:end_idx]
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         ''' get hyper '''
         dataset_items = len(self.dataset())
