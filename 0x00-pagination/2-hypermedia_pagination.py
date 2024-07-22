@@ -39,19 +39,22 @@ class Server:
             return self.__dataset[start_idx:end_idx]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
-        ''' get hyper '''
-        dataset_items = len(self.dataset())
+        """
+        Return a dictionary with pagination information.
+        """
         data = self.get_page(page, page_size)
+        dataset = self.dataset()
+        dataset_items = len(dataset)
         total_pages = math.ceil(dataset_items / page_size)
 
         return {
-            "page": page,
             "page_size": len(data),
+            "page": page,
             "data": data,
             "next_page": page + 1 if page < total_pages else None,
             "prev_page": page - 1 if page > 1 else None,
             "total_pages": total_pages
-            }
+        }
 
 
 def index_range(page: int, page_size: int) -> tuple:
