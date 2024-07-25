@@ -7,7 +7,9 @@ from collections import OrderedDict, defaultdict
 
 
 class LFUCache(BaseCaching):
+    '''LFU caching system class'''
     def __init__(self):
+        """Initialize"""
         super().__init__()
         self.freq = defaultdict(int)
         self.freq_list = defaultdict(OrderedDict)
