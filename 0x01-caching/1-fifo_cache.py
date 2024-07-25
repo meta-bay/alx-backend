@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
         else:
             length = len(self.cache_data) >= BaseCaching.MAX_ITEMS
             if length and key not in self.cache_data:
-                print(f"DISCARD {self.key_order[0]}")
+                print("DISCARD {}".format(self.key_order[0]))
                 del self.cache_data[self.key_order[0]]
                 del self.key_order[0]
             self.key_order.append(key)
