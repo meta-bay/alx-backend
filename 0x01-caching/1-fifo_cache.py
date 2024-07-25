@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
         else:
             length = len(self.cache_data)
             if length >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
-                print("DISCARD {}".format(self.key_order[0]))
+                print("DISCARD: {}".format(self.key_order[0]))
                 del self.cache_data[self.key_order[0]]
                 del self.key_order[0]
             self.key_order.append(key)
@@ -28,6 +28,6 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         '''retreives the dictionary by key'''
-        if key is not None and key in self.cache_data.keys():
-            return self.cache_data[key]
-        return None
+        if key is None or key not in self.cache_data:
+            return None
+        return self.cache_data[key]
