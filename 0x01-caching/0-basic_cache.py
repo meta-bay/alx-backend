@@ -9,6 +9,7 @@ class BasicCache(BaseCaching):
     '''
     Cashing system class
     '''
+
     def __init__(self):
         '''Initialize'''
         super().__init__()
@@ -17,7 +18,7 @@ class BasicCache(BaseCaching):
         '''puts the key and value in the dictionary'''
         if key is None or item is None:
             pass
-        if key is not None or item is not None:
+        else:
             self.cache_data[key] = item
 
     def get(self, key):
