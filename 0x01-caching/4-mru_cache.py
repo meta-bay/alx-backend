@@ -7,14 +7,14 @@ from collections import OrderedDict
 
 
 class MRUCache(BaseCaching):
-    '''LRU caching system class'''
+    '''MRU caching system class'''
     def __init__(self):
         '''Initialize'''
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        '''Creates dictionary in LRU algorithm'''
+        '''Creates dictionary in MRU algorithm'''
         if key is None or item is None:
             return
 
