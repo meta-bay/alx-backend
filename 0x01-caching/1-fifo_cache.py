@@ -18,8 +18,6 @@ class FIFOCache(BaseCaching):
             pass
         else:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                for k, _ in self.cache_data.items():
-                    self.key_order.append(k)
                 print(f"DISCARD {self.key_order[0]}")
                 del self.cache_data[self.key_order[0]]
                 del self.key_order[0]
