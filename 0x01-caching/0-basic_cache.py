@@ -15,11 +15,13 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item):
         '''puts the key and value in the dictionary'''
+        if key is None or item is None:
+            pass
         if key is not None or item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
         '''retreives the value'''
-        if key is None or key not in self.cache_data.keys():
+        if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
