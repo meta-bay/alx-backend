@@ -13,14 +13,16 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         '''Creates dictionary in FIFO algorithm'''
-        if key is not None or item is not None:
-            self.cache_data[key] = item
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            keys = []
-            for key, _ in self.cache_data.items():
-                keys.append(key)
-            print(f"DISCARD {keys[0]}")
-            del self.cache_data[keys[0]]
+        if key is None or item is None:
+            pass
+        else:
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                keys = []
+                for key, _ in self.cache_data.items():
+                    keys.append(key)
+                print(f"DISCARD {keys[0]}")
+                del self.cache_data[keys[0]]
+                self.cache_data[key] = item
 
     def get(self, key):
         '''retreives the dictionary by key'''
