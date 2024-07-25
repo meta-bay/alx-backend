@@ -10,6 +10,7 @@ class FIFOCache(BaseCaching):
     def __init__(self):
         '''Initialize'''
         super().__init__()
+        self.key_order = []
 
     def put(self, key, item):
         '''Creates dictionary in FIFO algorithm'''
@@ -17,11 +18,12 @@ class FIFOCache(BaseCaching):
             pass
         else:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                keys = []
                 for k, _ in self.cache_data.items():
-                    keys.append(k)
-                print(f"DISCARD {keys[0]}")
-                del self.cache_data[keys[0]]
+                    self.key_order.append(k)
+                print(f"DISCARD {self.key_order[0]}")
+                del self.cache_data[self.key_order[0]]
+                del self.key_order[0]
+            self.key_order.append(key)
             self.cache_data[key] = item
 
     def get(self, key):
