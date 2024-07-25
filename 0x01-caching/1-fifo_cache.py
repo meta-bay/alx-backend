@@ -18,11 +18,11 @@ class FIFOCache(BaseCaching):
         else:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 keys = []
-                for key, _ in self.cache_data.items():
-                    keys.append(key)
+                for k, _ in self.cache_data.items():
+                    keys.append(k)
                 print(f"DISCARD {keys[0]}")
                 del self.cache_data[keys[0]]
-                self.cache_data[key] = item
+            self.cache_data[key] = item
 
     def get(self, key):
         '''retreives the dictionary by key'''
