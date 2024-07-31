@@ -12,7 +12,7 @@ babel = Babel(app)
 
 class Config:
     '''config class'''
-    LANGUAGES: List[str] = ['en', 'fr']
+    LANGUAGES: List[str, str] = ['en', 'fr']
 
 
 @app.route('/')
