@@ -6,17 +6,17 @@ from flask import Flask, render_template
 from flask_babel import Babel
 from typing import List
 
-app = Flask(__name__)
-babel = Babel(app)
-
 
 class Config:
     '''config class'''
-    LANGUAGES: List[str] = ['en', 'fr']
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app.config['BABEL_DEFAULT_LOCALE'] = Config.LANGUAGES[0]
-app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app)
 
 
 @app.route('/')
