@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 '''
-1-app module
+2-app module
 '''
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_babel import Babel
 from typing import List
-from flask import request
+
 
 
 class Config:
@@ -24,3 +24,9 @@ babel = Babel(app)
 def get_locale() -> str:
     '''get locale from request'''
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+@app.route('/')
+def index() -> str:
+    '''returns the index'''
+    return render_template('2-index.html')
