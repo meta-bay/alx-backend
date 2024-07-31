@@ -4,6 +4,7 @@
 '''
 from flask import Flask, render_template
 from flask_babel import Babel
+from typing import List
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -11,7 +12,7 @@ babel = Babel(app)
 
 class Config:
     '''config class'''
-    LANGUAGES = ['en', 'fr']
+    LANGUAGES: List[str] = ['en', 'fr']
 
 
 @app.route('/')
